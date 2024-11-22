@@ -1,4 +1,4 @@
-FROM python:3.13-alpine
+FROM python:3.10-alpine
 
 WORKDIR /app
 RUN apk add --update --no-cache build-base libffi-dev openssl-dev
