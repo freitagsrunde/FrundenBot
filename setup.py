@@ -36,7 +36,7 @@ setup(
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)'
     ],
-    python_requires='>=3.7',
+    python_requires='>=3.13',
     install_requires=requirements(),
     packages=find_packages(),
     entry_points={
