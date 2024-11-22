@@ -265,7 +265,6 @@ class FrundenBot:
 
 
 @click.command()
-@click.option('--token', envvar='FRUNDE_TOKEN', help='Telegram bot token.', required=True)
 @click.option('--refresh-interval', envvar='FRUNDE_REFRESH_INTERVAL', default=60,
               help='Interval in seconds in which the bot should check if the Freitagsrunde is open.', show_default=True)
 @click.option('--s3-region-name', envvar='FRUNDE_S3_REGION_NAME', help='Region name of the s3 bucket.')
@@ -276,11 +275,13 @@ class FrundenBot:
               help='Path to store local data, if S3 is not used.')
 @click.option('--metrics-port', envvar='FRUNDE_METRICS_PORT', default=8000, help='Port to expose Prometheus metrics.',
               show_default=True)
-def cli(token, refresh_interval: int, s3_region_name: str, s3_bucket: str, s3_key: str, s3_secret: str, file_path: str,
+def cli(refresh_interval: int, s3_region_name: str, s3_bucket: str, s3_key: str, s3_secret: str, file_path: str,
         metrics_port: int):
     """
     All options are also available as environment variables, e.g. "--refresh-interval=30" can be set by "export REFRESH_INTERVAL=30".
     """
+
+    token = os.environ.get("AUTH_TOKEN")
 
     if s3_region_name and s3_bucket and s3_key and s3_secret:
         from frundenbot.storage import S3Storage
