@@ -1,0 +1,8 @@
+services:
+  frundenbot:
+    build: .
+    environment:
+      - TELEGRAM_BOT_ADMINS=XXXXX
+      - AUTH_TOKEN=YYYY:ZZZZZZZ
+    tmpfs:
+      - /var/frunde
