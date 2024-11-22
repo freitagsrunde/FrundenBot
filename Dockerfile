@@ -5,7 +5,7 @@ RUN apk add --update --no-cache build-base libffi-dev openssl-dev
 
 COPY README.md requirements.txt setup.py ./
 COPY frundenbot frundenbot
-RUN pip install .
+RUN pip install -e .
 
 USER nobody
 CMD ["frundenbot"]
